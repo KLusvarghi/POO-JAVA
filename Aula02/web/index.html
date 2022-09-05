@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Lista de Disciplinas</h1>
+        <div>
+            <%Date agora = new Date();%>
+        </div>
+        <%out.print(agora);%>
+        <hr/>
+        <div>
+            <h1>Nome:</h1>
+            <h4>Kauã Ortolani Lusvarghi</h4>
+        </div>
+        <table border="1">
+            <tr>
+                <th>Nome</th>
+                <th>Sigal</th>
+                <th>Ementa</th>
+                <th>Dia da Semana</th>
+                <th>Horario</th>
+            </tr>
+            <%for(Disciplina p: lista) {%>
+            <tr>
+                <td><%= (p.getNome() != null) ?p.getNome() : ""></td>
+                <td><%= (p.getSigla() != null) ?p.getSigla() : ""></td>
+                <td><%= (p.getEmenta() != null) ?p.getEmenta() : ""></td>
+                <td><%= (p.getDiaDaSemana() != null) ?p.getDiaDaSemana() : ""></td>
+                <td><%= (p.getHorario() != null) ?p.getHorario() : ""></td>
+            </tr>
+            <%}%>
+        </table>
+    </body>
+</html>

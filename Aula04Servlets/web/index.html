@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Aula 04</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>POO - Servlets</h1>
+        <h2>Inicio</h2>
+        <hr/>
+        <h3>Tabuada</h3>
+        <form method="get" action="tabuada.html">
+            Quantidade:
+            <input type="number" name="n"/>
+            <input type="submit" name="gerar-tabuada" value="Gerar"/>
+            <!-- Paramentors get =  ?n=2&gerar-tabuada=Enviar - HTML url - paramentros enviados visiveis --> 
+            <!-- Paramentors method= paramentros enviados invisiveis -->
+        </form>
+        <hr>
+        <h3>Soma</h3> 
+        <form action="soma.html"> <!-- action irá enviar o formulário para a determianda página -->
+            <input type="number" step="0.1" name="n1" value="2"/> +
+            <input type="number" step="0.1" name="n2" value="2"/>
+            <input type="submit" name="somar" value="="/>
+        </form>
+            
+        <hr>
+        
+        <h3>MathServlet</h3> 
+        <form action="math.html"> <!-- action irá enviar o formulário para a determianda página -->
+            <input type="number" step="0.1" name="n1" value="2"/> 
+            <input type="number" step="0.1" name="n2" value="2"/>
+            
+            <br>
+            <br>
+            
+            <input type='radio' name='operation' value='adic' checked> 
+            <label for='math'>Adição</label>
+            <input type='radio' name='operation' value='sub'>
+            <label for='math'>Subitração</label>
+            <input type='radio' name='operation' value='mult'>
+            <label for='math'>Multiplicação</label>
+            <input type='radio' name='operation' value='div'>
+            <label for='math'>Divisão</label>
+            <input type="submit" name="somar" value="Calcular"/>
+        </form>
+        
+        <hr>
+        
+        <h3>RandomServlet</h3> 
+        <form action="random.html">
+            <input type="number" step="2" name="num" value="10"/> 
+            <input type="submit" name="somar" value="Gerar"/>
+        </form>
+    </body>
+</html>
