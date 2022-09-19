@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>MyTasks</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous"> <!--Link do bootstrap -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"> <!--Link de icon do botstrap-->
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> <!--Link do vue.js -->
+    </head>
+    <body>
+        <nav class="navbar bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">KauãTasks</a>
+            </div>
+        </nav>
+        <div id="app" class="container-fluid m-1">
+            <h2>Minhas Tarefas: {{message}}</h2>
+            <!-- {{list}} -->
+            <div v-if="loading" class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <div v-if="error" class="alert alert-danger" role="alert">
+                Eventual mensagem de ERROR!
+            </div>
+            <div class="input-group mb-3">
+                <button v-on:click="addTask()" class="btn btn-outline-secondary" type="button">+</button>
+                <input v-model="newTask" type="text" class="form-control">
+            </div>
+            <table class="table">   
+                <tr v-for="task in list">
+                    <th>
+                        <button v-on:click="removeTask(task)" class="btn btn-secondary btn-sm" type="button">
+                            <i class="bi bi-check-circle-fill"></i>
+                        </button>
+                        {{task}}</th>
+                </tr>
+            </table>
+            <h4>Desenvolvido por: Kauã Ortolani Lusvarghi</h4>
+        </div>
+        <script>
+const {createApp} = Vue
+
+createApp({
+    data() {
+        return {
+            message: 'Hello Vue!',
+            loading: false,
+            error: null,
+            list: null, // lista para ler quilo que foi atribuido ao json
+            newTask: ""
+        }
+    },
+    mounted() { // é um evento quando a estrutura do vue está pronto
+        this.loadList(); // assim carregando a lista automaticamente
+    },
+    methods: {
+        addTask() {
+            this.loadList("add="+this.newTask);
+            this.newTask = "";
+        },
+        removeTask(task) {
+            this.loadList("remove="+this.task);
+        },
+        loadList(params) { // metodo que irá consumir o json e irá atribuir ao list
+            var url = "tasks.json";
+            if(params) url += '?' + params;
+            var app = this;
+            try {
+                app.loading = true;
+                fetch(url).then(function (response) {
+                    return response.json();
+                }).then(function (data) {
+                    app.list = data;
+                }).catch(function (e) {
+                    app.error = e;
+                }).finally(function () {
+                    app.loading = false;
+                });
+            } catch (err) {
+                this.error = err;
+            }
+        }
+    }
+}).mount('#app')
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    </body>
+</html>
+
