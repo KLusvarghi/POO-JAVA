@@ -80,15 +80,9 @@ public class MathServlet extends HttpServlet {
                 out.println("<h2>" +n1+ " x " +n2+" = " + (n1*n2) + "</h2>");
             }else {
                 out.println("<h2>" +n1+ " / " +n2+" = " + (n1/n2) + "</h2>");
-            }
-            
-             
-             
+            }             
             out.println("</body>");
             out.println("</html>");
-           
-                        
-
         }
     }
 

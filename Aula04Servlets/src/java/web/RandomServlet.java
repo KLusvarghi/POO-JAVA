@@ -61,6 +61,9 @@ public class RandomServlet extends HttpServlet {
                 out.println("<tr>");
                 out.println("<td>"+ rand + "</td>");
                 out.println("</tr>");
+                if( i != 0 && i % 10 == 0){
+                    out.println("<br>");
+                }
             }
             out.println("</body>");
             out.println("</html>");
