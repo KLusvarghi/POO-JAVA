@@ -1,0 +1,42 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<%
+Double capital = 0.0;
+Double juros = 0.0;
+Integer meses = 0;
+String error = null;
+ try {
+capital = Double.valueOf(request.getParameter("vlCapital"));
+juros = Double.valueOf(request.getParameter("vlJuros"));
+meses = Integer.valueOf(request.getParameter("vlTempo"));
+ } catch (Exception e) {
+error = e.getMessage();
+}
+ 
+
+            double jurosS = 1 + (juros / 100);
+            //double composto = p * Math.pow(juros,t);
+            double composto = capital * Math.pow(jurosS, meses);
+%>
+
+<form>
+<div class="mb-3">
+<label class="form-label">Digite o valor capital</label>
+<input type="number" class="form-control" name="vlCapital" >
+</div>
+<div class="mb-3">
+<label class="form-label">Digite o valor do juros</label>
+<input type="number" class="form-control" name="vlJuros">
+</div>
+<div class="mb-3">
+<label class="form-label">Digite o valor do tempo</label>
+<input type="number" class="form-control" name="vlTempo">
+</div>
+<button type="submit" class="btn btn-primary" name="calcular">Calcular</button>
+</form>
+<hr>
+<% if(error != null) { %>
+<span>Informe os valores</span>
+
+<% } else %>
+<h2> Juros Composto <%= composto %></h2>
