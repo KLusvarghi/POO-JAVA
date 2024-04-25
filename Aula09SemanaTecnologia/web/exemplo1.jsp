@@ -1,9 +1,3 @@
-<%-- 
-    Document   : exemplo1
-    Created on : 17/10/2022, 14:15:17
-    Author     : Ghost
---%>
-
 <%@page contentType="text/html" import="java.util.*, java.text.*"
 pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -23,9 +17,8 @@ pageEncoding="ISO-8859-1"%>
         <%
             // JavaServer Pages é uma tecnologia que ajuda os desenvolvedores de software a criarem páginas web geradas dinamicamente baseadas em HTML, XML ou outros tipos de documentos. 
             // Podendo assim executar páginas HTML com códigos java dentro
-            int dia = Integer.parseInt((new SimpleDateFormat("dd"))
-            .format(new Date()));
-            out.println("<br>Hoje é dia " + dia);
+            Date agora = new Date() ;
+            out.println("<br>Hoje: " + agora);
         %>
         
         
